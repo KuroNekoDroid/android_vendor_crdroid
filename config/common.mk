@@ -15,6 +15,26 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
 endif
 
+# Android GO optimizations
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+
+# ART
+ART_BUILD_TARGET_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_HOST_DEBUG := false
+
+# DEXPREOPT
+WITH_DEXPREOPT_DEBUG_INFO := false
+DONT_DEXPREOPT_PREBUILTS := true
+
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
+# DEX2OAT
+USE_DEX2OAT_DEBUG := false
+
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
